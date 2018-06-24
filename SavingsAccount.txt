@@ -1,0 +1,35 @@
+package com.nucleus.assignment2;
+
+public class SavingsAccount extends Account
+{
+	int interest=5;
+	double maxWith=5000;
+	double maxAmt=20000;
+	SavingsAccount(String name,double accountBalance)
+	{
+		super(name,accountBalance);
+		
+		
+	}
+	double getbalance()
+	{
+		double balance=accountBalance+(accountBalance*interest*1/100);
+		return balance;
+	}
+	void withdraw(double amount)
+	{
+		if(amount>maxAmt)
+		{
+			System.out.println("You exceeded Maximum Withdraw limit");
+		}
+		else
+		{
+			accountBalance=accountBalance-amount;
+			System.out.println("Withdrawed amount is: "+amount);
+			System.out.println("Your current balance is: "+accountBalance);
+			
+		}
+	}
+	
+
+}

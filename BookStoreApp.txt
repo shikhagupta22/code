@@ -1,0 +1,21 @@
+package com.nucleus.assignment2;
+
+public class BookStoreApp
+{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) 
+	{
+		Book b=new Book();
+        b.Book[0]=new Book();
+		for(int i=0;i<=10;i++)
+		{
+			books[0].isbn=1233;
+			
+		}
+
+	}
+
+}

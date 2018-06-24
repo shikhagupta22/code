@@ -1,0 +1,67 @@
+import java.util.*;
+public class TestAccount 
+{
+
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("MENU");
+		System.out.println("Enter your account type");
+		System.out.println("Press 1 for Current Account");
+		System.out.println("Press 2 for Savings Account");
+		System.out.println("Press 3 for exit");
+		Scanner sc= new Scanner(System.in);
+		int ch=sc.nextInt();
+		switch(ch)
+		{
+		case 1:
+		       System.out.println("Press 1 for depositing money");
+		       System.out.println("Press 2 for display balance");
+		       System.out.println("Press 3 for check minimum balance ");
+		       System.out.println("Press 4 for exit");
+		       CurrentAcc c=new CurrentAcc();
+		       int a=sc.nextInt();
+		       switch(a)
+		       {
+			       case 1:c.init("Shikha",607123,"Current",20000);
+			              System.out.println("Enter the amount you want to deposit");
+			              c.deposit=sc.nextLong();
+		                  c.deposit(c.deposit);
+		                  break;
+			       case 2:c.display("Shikha",607123,"Current",20000);
+			              break;
+			       case 3:c.checkBalance(c.minBalance);
+			              break;
+			       default:System.out.println("You pressed wrong number");       
+		        }
+		        break;
+		        
+		case 2:
+		       System.out.println("Press 1 for depositing money");
+		       System.out.println("Press 2 for display balance");
+		       System.out.println("Press 3 for withdraw");
+		       System.out.println("Press 4 for interest");
+		       System.out.println("Press 5 for exit");
+		       SavingsAcc s=new SavingsAcc();
+		       int b=sc.nextInt();
+		       switch(b)
+		       {
+			      case 1:s.init("Shikha",607123,"Savings",10000);
+			             System.out.println("Enter the amount you want to deposit");
+			             s.deposit=sc.nextLong();
+			             s.deposit(s.deposit);
+			             break;
+			      case 2:s.display("Shikha",607123,"Savings",10000);break;
+			      case 3:System.out.println("Enter the amount you want to withdraw");
+				         s.withdraw(s.withdraw);
+				         break;
+			      case 4:s.compInterest(s.bal, 5, 2, 2);
+			             break;
+			      default:System.out.println("You pressed wrong number"); 
+		        }
+		        break;
+		        }}
+
+	}
+
+

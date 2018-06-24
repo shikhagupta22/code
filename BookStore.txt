@@ -1,0 +1,19 @@
+package com.nucleus.assignment2;
+
+public class BookStore 
+{
+	Book[] books=new Book[10];
+	void sell(String bookTitle,int numOfCopies)
+	{
+		
+	}
+	void order(String isbn,int numOfCopies)
+	{
+		
+	}
+	void display()
+	{
+		
+	}
+
+}

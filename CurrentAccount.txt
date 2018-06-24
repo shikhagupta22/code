@@ -1,0 +1,32 @@
+package com.nucleus.assignment2;
+
+public class CurrentAccount extends Account
+{
+	int tradeLicenseNumber=132456;
+	CurrentAccount(String name,double accountBalance)
+	{
+		super(name,accountBalance);
+		
+	}
+	double getBalance()
+	{
+		return accountBalance;
+	}
+	void withdraw(double amount)
+	{
+		if(amount>accountBalance)
+		{
+			System.out.println("You exceeded Maximum Withdraw limit");
+		}
+		else
+		{
+			accountBalance=accountBalance-amount;
+			System.out.println("Withdrawed amount is: "+amount);
+			System.out.println("Your current balance is: "+accountBalance);
+			
+		}
+	}
+	
+	
+
+}

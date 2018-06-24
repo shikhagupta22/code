@@ -1,0 +1,113 @@
+package com.nucleus.assignment2;
+
+import java.util.Scanner;
+
+public class Bank 
+{
+
+
+	public static void main(String[] args) 
+	{
+		System.out.println("Press 1 to create account");
+		Scanner sc=new Scanner(System.in);
+		int ch=sc.nextInt();
+		if(ch==1)
+		{
+			System.out.println("Enter your name,type of account and initial balance");
+			System.out.println("Enter name:");
+			String name=sc.next();
+			System.out.println("Enter type of account you want to open:");
+			String type=sc.next();
+			System.out.println("Enter initial balance:");
+			double balance=sc.nextDouble();
+			System.out.println("Your account is created");
+			System.out.println("MENU");
+			System.out.println("Press 1 to deposit money");
+			System.out.println("Press 2 for withdrawl of money");
+			System.out.println("Press 3 to check balance");
+			System.out.println("Press 0 to exit");
+			int a=sc.nextInt();
+			
+			
+			if(type.equals("savings"))
+			{
+				
+				SavingsAccount s=new SavingsAccount(name,balance);
+				switch(a)
+				{case 1:s.genAcc();
+	        	        System.out.println("Your account number is: " +s.accountNumber);
+					    System.out.println("Do you want to check balance(Y/N)");
+				        String b=sc.next();
+				        if(b.equals("y")||b.equals("Y"))
+				        {
+				        	
+				        	System.out.println("Your balance is: "+s.accountBalance);
+				        	System.out.println("Enter the amount you want to deposit");
+				        	double dep=sc.nextDouble();
+				        	s.deposit(dep);
+				        	System.out.println("now your current balance is:"+s.accountBalance);
+				        	
+				        }
+				        break;
+				case 2:System.out.println("Do you want to check balance(Y/N)");
+		               String c=sc.next();
+		               if(c.equals("y")||c.equals("Y"))
+		               {
+		        	     System.out.println("Your balance is: "+s.accountBalance);
+		        	     System.out.println("Enter the amount you want to withdraw");
+		        	     double with=sc.nextDouble();
+		        	     s.withdraw(with);
+		        	   }
+		               break;
+				case 3:System.out.println("Your current balance is: "+s.accountBalance);
+				       break;
+				case 0:System.exit(0);
+	
+			
+				}
+				
+			}
+			else if(type.equals("current"))
+			{
+				
+				CurrentAccount c1=new CurrentAccount(name,balance);
+				switch(a)
+				{case 1:c1.genAcc();
+	        	        System.out.println("Your account number is: "+c1.accountNumber);
+	        	        System.out.println("Do you want to check balance(Y/N)");
+				        String b=sc.next();
+				        if(b.equals("y")||b.equals("Y"))
+				        {
+				        					        	System.out.println("Your balance is: "+c1.accountBalance);
+				        	System.out.println("Enter the amount you want to deposit");
+				        	double dep=sc.nextDouble();
+				        	c1.deposit(dep);
+				        	System.out.println("now your current balance is:"+c1.accountBalance);
+				        	
+				        }
+				        break;
+				case 2:System.out.println("Do you want to check balance(Y/N)");
+		               String c=sc.next();
+		               if(c.equals("y")||c.equals("Y"))
+		               {
+		        	     System.out.println("Your balance is: "+c1.accountBalance);
+		        	     System.out.println("Enter the amount you want to withdraw");
+		        	     double with=sc.nextDouble();
+		        	     c1.withdraw(with);
+		        	   }
+		               break;
+				case 3:System.out.println("Your current balance is: "+c1.accountBalance);
+				       break;
+				case 0:System.exit(0);
+	
+				
+			}
+		}
+		else
+		{
+			System.out.println("Please enter correct choice");
+		}
+
+	}
+
+	}}

@@ -1,0 +1,21 @@
+package com.nucleus.assignment2;
+
+public class Book 
+{
+	String bookTitle;
+	String author;
+	String isbn;
+	int numOfCopies;
+	Book(String bookTitle,String author,String isbn,int numOfCopies)
+	{
+		this.bookTitle=bookTitle;
+		this.author=author;
+		this.isbn=isbn;
+		this.numOfCopies=numOfCopies;
+	}
+	void display()
+	{
+		System.out.println(bookTitle+"-"+author+"-"+isbn+"-"+numOfCopies);
+	}
+
+}
