@@ -1,0 +1,31 @@
+
+public class SavingsAcc extends Account
+{
+	int withdraw;
+	int minBalance=5000;
+	void compInterest(float balance,float rate,int n ,int time)
+	{
+		float a=(1 + rate/n);
+		float b=(n*time);
+		double Amount=balance*(Math.pow(a,b));
+		System.out.println("Your interest for amount:"+balance+"is"+(Amount-balance));
+		
+		
+	}
+	void withdraw(int withAmount)
+	{
+		if((withAmount-bal)<minBalance)
+		{
+			System.out.println("You cannot withdraw amount");
+		}
+		else
+		{
+			bal=bal-withAmount;
+			System.out.println("Your updated balance is :"+bal);
+			
+			
+		}
+		
+	}
+
+}

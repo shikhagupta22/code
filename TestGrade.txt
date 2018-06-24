@@ -1,0 +1,15 @@
+
+public class TestGrade {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) 
+	{
+		GradesAverage g=new GradesAverage();
+		g.values();
+		g.avg();
+
+	}
+
+}

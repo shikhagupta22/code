@@ -1,0 +1,35 @@
+public class Account 
+{
+	String custName;
+	int accNo;
+	String typeOfAcc;
+	long bal;
+	long deposit;
+	void init(String custName,int accNo,String typeOfAcc,int bal)
+	{
+		this.custName=custName;
+		this.accNo=accNo;
+		this.typeOfAcc=typeOfAcc;
+		this.bal=bal;
+		System.out.println("Account [custName=" + custName + ", accNo=" + accNo
+		+ ", typeOfAcc=" + typeOfAcc + ", balance=" + bal + "]");
+		
+		
+	}
+
+	void deposit(long deposit)
+	{
+		this.bal+=deposit;
+	}
+	void display(String custName,int accNo,String typeOfAcc,int bal)
+	{
+		this.custName=custName;
+		this.accNo=accNo;
+		this.typeOfAcc=typeOfAcc;
+		this.bal=bal;
+		System.out.println("Account [custName=" + custName + ", accNo=" + accNo
+				+ ", typeOfAcc=" + typeOfAcc + ", Previous balance=" + bal + "]");
+				System.out.println("Current balance is :"+  bal);
+	}
+
+}

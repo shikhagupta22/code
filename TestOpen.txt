@@ -1,0 +1,33 @@
+
+public class TestOpen 
+{
+	static void open(char door,char window,char acc)
+	{
+		if(door=='y'||door=='Y')
+		{
+			System.out.println("Door is open");
+		}
+		else if(window=='y'||window=='Y')
+		{
+			System.out.println("Window is open");
+		}
+		else if(acc=='y'||acc=='Y')
+		{
+			System.out.println("Bank Account is open");
+		}
+		else
+		{
+			System.out.println("Nothing is opened");
+		}
+	}
+
+	
+	public static void main(String[] args) 
+	{
+		TestOpen.open('y','n','f');
+		TestOpen.open('n','y','f');
+		TestOpen.open('f','n','y');
+		TestOpen.open('n','n','n');
+		
+
+	}

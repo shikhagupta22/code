@@ -1,0 +1,18 @@
+
+public class CurrentAcc extends Account
+{
+	int minBalance=5000;
+	void checkBalance(float minBalance)
+	{
+		if(bal<minBalance)
+		{
+			System.out.println("Since your balance is below than minimum balance a penalty of 100rs.is imposed!");
+		}
+		else
+		{
+			System.out.println("Your balance is:"+bal);
+		}
+		
+	}
+
+}

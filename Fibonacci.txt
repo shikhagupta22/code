@@ -1,0 +1,33 @@
+
+public class Fibonacci 
+{
+	int n1=1,n2=1,n3=0,sum=0,i;
+	void printFib()
+	{
+		System.out.println("The fibonacci series upto 20 is:");
+		System.out.print(n1+" "+n2);
+		{
+			
+			for(i=0;i<=20;i++)
+			{
+				n3=n1+n2;
+				n1=n2;
+				n2=n3;
+				sum=sum+n3;
+				System.out.print(" "+n3);
+			}
+			
+		}}
+		
+		
+	void average(int sum)
+	{
+		int avg=(sum/20);
+		System.out.println(" ");
+		System.out.println("The average is  "+avg);
+		
+		
+		
+	}
+
+}

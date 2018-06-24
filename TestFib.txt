@@ -1,0 +1,12 @@
+
+public class TestFib 
+{
+	public static void main(String args[])
+	{
+		Fibonacci f=new Fibonacci();
+		f.printFib();
+		f.average(f.sum);
+		
+	}
+
+}
