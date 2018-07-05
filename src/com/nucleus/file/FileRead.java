@@ -7,8 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import com.nucleus.connection.ConnectionI;
-import com.nucleus.connection.OracleConnection;
+
 import com.nucleus.database.EmployeeDAO;
 import com.nucleus.pojo.CustomerPojo;
 import com.nucleus.validate.Validation;
@@ -18,14 +17,10 @@ import com.nucleus.validate.Validation;
 
 public class FileRead
 {
-	public void readFile(String str1,String str2,int ch) throws IOException, SQLException
+	int flag=0;
+	public void readFile(String str1,String str2,int ch,Connection conn) throws IOException, SQLException
 	{
-		Connection conn=null;
-		ConnectionI c=null;
-		c=new OracleConnection();
-		conn=c.getConnection();
 		BufferedReader br;
-		int flag=0;
 		BufferedWriter fr = new BufferedWriter(new FileWriter("d:/error log.txt",true));;
 		CustomerPojo cp=new CustomerPojo();
 		Validation v=new Validation();
@@ -34,11 +29,10 @@ public class FileRead
 		FileWrite fw=new FileWrite();
 	    String string;
 		String[] str=null;
-		//ArrayList<String> code=new ArrayList<String>();
 		while((string=br.readLine())!=null)
 		{
 			System.out.println("Filereading");
-			boolean b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
+			boolean b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11;
 			str=string.split("~",-1);
 			cp.setCode(str[0]);
 			cp.setName(str[1]);
@@ -67,71 +61,69 @@ public class FileRead
 			b9=v.flag(str[9]);
 			b10=v.mandatory(str[10]);
 			b11=v.mandatory(str[11]);
-			b12=v.mandatory(str[0]);
 			System.out.println(b1+" "+b2+" "+b3+" "+b4+" "+b5+" "+b6+" "+b7+" "+b8+" "+b9+" "+b10+" "+b11);
 			System.out.println(string);
 			if(b1==false||b2==false||b3==false||b4==false||b5==false||b6==false||b7==false||b8==false||b9==false||b10==false||b11==false||b11==false)
 			{
 				if(ch==2)
 				{
-				flag=1;
+				flag++;
 				}
 				fw.recordWrite(cp);
-				//bw.flush();
-				if(b1==false||b12==false)
+				if(b1==false)
 					
 					{
-						fr.append("There is error in Id");
+						fr.append("->There is error in Id");
 						fr.flush();
 					}
 					if(b2==false)
 					{
-						fr.append("There is error in name");
+						fr.append("->There is error in name");
 						fr.flush();
 					}
 					if(b3==false)
 					{
-						fr.append("There is error in Address1");
+						fr.append("->There is error in Address1");
 						fr.flush();
 					}
 					if(b4==false)
 					{
-						fr.append("There is error in Pin Code");
+						fr.append("->There is error in Pin Code");
 						fr.flush();
 					}
 					if(b5==false)
 					{
-						fr.append("There is error in Email");
+						fr.append("->There is error in Email");
 						fr.flush();
 					}
 					if(b6==false)
 					{
-						fr.append("There is error in Contact");
+						fr.append("->There is error in Contact");
 						fr.flush();
 					}
 					if(b7==false)
 					{
-						fr.append("There is error in Primary Contact Person");
+						fr.append("->There is error in Primary Contact Person");
 						fr.flush();
 					}
 					if(b8==false)
 					{
-						fr.append("There is error in Record Status");
+						fr.append("->There is error in Record Status");
 						fr.flush();
 					}
 					if(b9==false)
 					{
-						fr.append("There is error in  flag status");
+						fr.append("->There is error in  flag status");
 						fr.flush();
 					}
 					if(b10==false)
 					{
-						fr.append("There is error in create date");
+						fr.append("->There is error in create date");
 						fr.flush();
 					}
 					if(b11==false)
 					{
-						fr.append("There is error in created by");
+						fr.append("->There is error in created by");
 						fr.flush();
 					}
 		}
@@ -140,23 +132,22 @@ public class FileRead
 					if(ch==1)
 					{
 						EmployeeDAO ed=new EmployeeDAO();
-						ed.insert(cp);
+						ed.insert(cp,conn);
 						conn.commit();
+						
 						
 					}
 					else if(ch==2)
 					{
-						
-						//conn.setAutoCommit(false);
 						EmployeeDAO ed=new EmployeeDAO();
-						ed.insert(cp);
-						if(flag==1)
+						if(flag>0)
 						{
+							fw.recordWrite(cp);
 							conn.rollback();
+							continue;
 						}
 						
-						
-						
+						ed.insert(cp,conn);
 					}
 					
 				}
@@ -165,7 +156,6 @@ public class FileRead
 			
 			br.close();
 			fr.close();
-			conn.close();
 			
 		}
 		

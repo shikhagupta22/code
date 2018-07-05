@@ -9,7 +9,8 @@ public class Validation
 	
     public boolean validId(String id)
     {
-    	//Iterator itr=code.iterator();
+    	if(!id.isEmpty())
+    	{
    	    for(String str:code)
    	 {
    		 if(str==id)
@@ -21,15 +22,16 @@ public class Validation
    	    code.add(id);
    	    }
    	}
-return true;
+return true;}
+    	return false;
     }	
  
 	public boolean mandatory(String var)
 	{
-		if(!var.isEmpty())
-			return true;
-		else
+		if(var.isEmpty())
 			return false;
+		else
+			return true;
 	}
 	public boolean validName(String name)
 	{

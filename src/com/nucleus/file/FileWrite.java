@@ -8,16 +8,11 @@ import com.nucleus.pojo.CustomerPojo;
 
 public class FileWrite 
 {
-	public void fileWrite(String var) throws IOException
-	{
-	BufferedWriter fr=new BufferedWriter(new FileWriter("d:/error log.txt",true));
-	fr.append(var);
-
-    }
+	BufferedWriter fr;
 	public void recordWrite(CustomerPojo cp) throws IOException
 	{
 		System.out.println("file write");
-		BufferedWriter fr=new BufferedWriter(new FileWriter("d:/error log.txt",true));
+		fr=new BufferedWriter(new FileWriter("d:/error log.txt",true));
 		fr.append(cp.getCode());
 		fr.append(cp.getName());
 		fr.append(cp.getAd1());
@@ -35,9 +30,8 @@ public class FileWrite
 		fr.append(cp.getCustAuthorizedDate());
 		fr.append(cp.getCustAuthorizedBy());
 		fr.flush();
+		fr.close();
 		
 		
 	}
-	//fr.close();
-	//fr.close();
 }

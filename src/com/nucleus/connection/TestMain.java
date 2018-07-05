@@ -1,6 +1,7 @@
 package com.nucleus.connection;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -11,8 +12,9 @@ public class TestMain
 
 	public static void main(String[] args) throws IOException, SQLException 
 	{
+		Connection conn;
 		ConnectionI c=ConnectionFactory.getConnection("oracle");
-		c.getConnection();
+		conn=c.getConnection();
 		Scanner sc=new Scanner(System.in);
 		int ch;
 		String str1=null,str2=null;
@@ -34,7 +36,8 @@ public class TestMain
 		System.out.println("Enter 2 for rejection level F");
 		ch=sc.nextInt();
 	    FileRead f=new FileRead();
-		f.readFile(str1,str2,ch);
+		f.readFile(str1,str2,ch,conn);
+		conn.close();
 
 	}
 
